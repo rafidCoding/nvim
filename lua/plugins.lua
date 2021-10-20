@@ -32,6 +32,7 @@ use {
 use 'glepnir/zephyr-nvim'
 use 'gruvbox-community/gruvbox'
 use 'lifepillar/vim-solarized8'
+use 'Mofiqul/vscode.nvim'
 -- use 'shaunsingh/nord.nvim'
 -- use 'folke/tokyonight.nvim'
 -- use {'dracula/vim', as = 'dracula'}
@@ -144,5 +145,14 @@ use {
     require("notify").setup({
       timeout = 2500,
     })
+  end
+}
+
+use {
+  'phaazon/hop.nvim',
+  as = 'hop',
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
 }
