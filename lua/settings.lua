@@ -68,10 +68,12 @@ augroup end
 " autocmd BufWritePost ~/.config/nvim/lua/mappings.lua luafile ~/.config/nvim/lua/mappings.lua
 autocmd BufNewFile  *.cpp 0r ~/.config/nvim/main.cpp
 autocmd BufNewFile  *.cc 0r ~/.config/nvim/main.cpp
-if strftime("%H") < 9
+if strftime("%H") < 6
   colorscheme gruvbox
-elseif strftime("%H") < 12
+elseif strftime("%H") < 9
   colorscheme zephyr
+elseif strftime("%H") < 12
+  colorscheme vscode
 else
   colorscheme solarized8
 endif
