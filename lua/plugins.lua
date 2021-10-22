@@ -32,7 +32,7 @@ use {
 use 'glepnir/zephyr-nvim'
 use 'gruvbox-community/gruvbox'
 use 'lifepillar/vim-solarized8'
-use 'Mofiqul/vscode.nvim'
+use 'tomasiser/vim-code-dark'
 -- use 'shaunsingh/nord.nvim'
 -- use 'folke/tokyonight.nvim'
 -- use {'dracula/vim', as = 'dracula'}
@@ -155,4 +155,9 @@ use {
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
+}
+use {
+  "folke/which-key.nvim",
+  event = "BufWinEnter
+  config = plugins.whichkey
 }
