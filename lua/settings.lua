@@ -73,7 +73,7 @@ if strftime("%H") < 6
 elseif strftime("%H") < 9
   colorscheme zephyr
 elseif strftime("%H") < 12
-  colorscheme vscode
+  colorscheme codedark
 else
   colorscheme solarized8
 endif
