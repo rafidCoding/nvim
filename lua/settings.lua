@@ -60,7 +60,7 @@ vim.cmd[[
 augroup source_on_save
   autocmd!
   autocmd BufWritePost plugins.lua source plugins.lua | PackerSync
-  autocmd BufWritePost plugconfigs.lua source plugconfigs.lua
+  autocmd BufWritePost plugconfigs.lua source plugconfigs.lua | PackerSync
   autocmd BufWritePost settings.lua source settings.lua
   autocmd BufWritePost mappings.lua source mappings.lua
 augroup end

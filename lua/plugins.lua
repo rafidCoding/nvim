@@ -156,8 +156,3 @@ use {
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
 }
-use {
-  "folke/which-key.nvim",
-  event = "BufWinEnter
-  config = plugins.whichkey
-}

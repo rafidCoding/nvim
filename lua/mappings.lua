@@ -31,3 +31,14 @@ local cpp = {
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
 
+map('n', '<leader>hw', '<cmd>HopWord<cr>', opt)
+map('n', '<leader>hl', '<cmd>HopLine<cr>', opt)
+
+
+map('n', '<leader>q', ':q<cr>', opt)
+map('n', '<leader>Q', ':wq<cr>', opt)
+map('n', '<leader>w', ':w<cr>', opt)
+
+map('n', '<leader>s', ':e ~/.config/nvim/settings.lua', opt)
+map('n', '<leader>m', ':e ~/.config/nvim/mappings.lua', opt)
+map('n', '<leader>p', ':e ~/.config/nvim/plugconfigs.lua', opt)
