@@ -28,14 +28,14 @@ use {
   -- event = {"BufRead", "BufNewFile"},
   event = "VimEnter"
 }
--- use 'ii14/onedark.nvim'
+use 'ii14/onedark.nvim'
 use 'glepnir/zephyr-nvim'
-use 'gruvbox-community/gruvbox'
+use 'morhetz/gruvbox'
 use 'lifepillar/vim-solarized8'
 use 'tomasiser/vim-code-dark'
--- use 'shaunsingh/nord.nvim'
--- use 'folke/tokyonight.nvim'
--- use {'dracula/vim', as = 'dracula'}
+use 'shaunsingh/nord.nvim'
+use 'folke/tokyonight.nvim'
+use {'dracula/vim', as = 'dracula'}
 -- use {
 --   'hoob3rt/lualine.nvim',
 --   event = {"VimEnter", "BufRead", "BufNewFile"},
