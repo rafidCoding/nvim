@@ -57,15 +57,13 @@ vim.o.expandtab = true
 -- vim.g.loaded_remote_plugins    = 1
 
 vim.cmd[[
-augroup source_on_save
+augroup packer_user_config
   autocmd!
-  autocmd BufWritePost plugins.lua source plugins.lua | PackerSync
-  autocmd BufWritePost plugconfigs.lua source plugconfigs.lua | PackerSync
-  autocmd BufWritePost settings.lua source settings.lua
-  autocmd BufWritePost mappings.lua source mappings.lua
+  autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source ~/.config/nvim/lua/plugins.lua | PackerSync
 augroup end
-" autocmd BufWritePost ~/.config/nvim/lua/settings.lua luafile ~/.config/nvim/lua/settings.lua
-" autocmd BufWritePost ~/.config/nvim/lua/mappings.lua luafile ~/.config/nvim/lua/mappings.lua
+autocmd BufWritePost ~/.config/nvim/lua/settings.lua luafile ~/.config/nvim/lua/settings.lua
+autocmd BufWritePost ~/.config/nvim/lua/mappings.lua luafile ~/.config/nvim/lua/mappings.lua
+autocmd BufWritePost ~/.config/nvim/lua/plugconfigs.lua luafile ~/.config/nvim/lua/plugconfigs.lua
 autocmd BufNewFile  *.cpp 0r ~/.config/nvim/main.cpp
 autocmd BufNewFile  *.cc 0r ~/.config/nvim/main.cpp
 if strftime("%H") < 6
