@@ -156,9 +156,8 @@ end
 
 function config.galaxyline()
   local gl = require('galaxyline')
-  local colors = {}
-  if vim.g.colors_name == "gruvbox" then
-    colors = {
+  local theme = {}
+  theme.gruvboxcolors = {
       bg = '#3c3836',
       -- fg = '#ebdbb2',
       fg = 'd5c4a1',
@@ -172,39 +171,33 @@ function config.galaxyline()
       blue = '#83a598',
       red = '#fb4934'
     }
-  elseif vim.g.colors_name == "solarized8" then
-    colors = {
-      bg = '#073642',
-      fg = '#eee8d5',
-      yellow = '#b58900',
-      cyan = '#2aa198',
-      darkblue = '#268bd2',
-      green = '#859900',
-      orange = '#cb4b16',
-      violet = '#6c71c4',
-      magenta = '#d33682',
-      blue = '#839496',
-      red = '#dc322f'
-    }
-  elseif vim.g.colors_name == "codedark" then
-    colors = {
-      bg = '#808080',
-      fg = '#d4d4d4',
-      yellow = '#dcdcaa',
-      cyan = '#4ec9b0',
-      darkblue = '#569cd6',
-      green = '#608b4e',
-      orange = '#ce9178',
-      violet = '#646695',
-      magenta = '#c586c0',
-      blue = '#9cdcfe',
-      red = '#f44747'
-    }
-  else
-    colors = require('galaxyline.theme').default
-  end
-  -- elseif vim.g.colors_name == "solarized"
-  -- local colors = require('galaxyline.theme').default
+  theme.solarizedcolors = {
+    bg = '#073642',
+    fg = '#eee8d5',
+    yellow = '#b58900',
+    cyan = '#2aa198',
+    darkblue = '#268bd2',
+    green = '#859900',
+    orange = '#cb4b16',
+    violet = '#6c71c4',
+    magenta = '#d33682',
+    blue = '#839496',
+    red = '#dc322f'
+  }
+  theme.codedarkcolors = {
+    bg = '#353535',
+    fg = '#d4d4d4',
+    yellow = '#dcdcaa',
+    cyan = '#4ec9b0',
+    darkblue = '#569cd6',
+    green = '#608b4e',
+    orange = '#ce9178',
+    violet = '#646695',
+    magenta = '#c586c0',
+    blue = '#9cdcfe',
+    red = '#f44747'
+  }
+  local colors = require('galaxyline.theme').default  
   local condition = require('galaxyline.condition')
   local gls = gl.section
   gl.short_line_list = {'NvimTree','vista','dbui','packer'}
