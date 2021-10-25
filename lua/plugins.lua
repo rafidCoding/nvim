@@ -134,6 +134,7 @@ use {
 
 use {
   'lukas-reineke/indent-blankline.nvim',
+  event = "VimEnter",
   config = plugins.indentBlankline
 }
 
@@ -154,5 +155,21 @@ use {
   config = function()
     -- you can configure Hop the way you like here; see :h hop-config
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+}
+
+use {
+  'lewis6991/gitsigns.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  },
+  config = plugins.gitsigns
+}
+
+use {
+  'karb94/neoscroll.nvim',
+  event = "VimEnter",
+  config = function()
+    require('neoscroll').setup()
   end
 }
