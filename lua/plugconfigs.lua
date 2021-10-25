@@ -91,23 +91,12 @@ end
 
 function config.nvimtree()
   -- nvim-tree setup
+  vim.g.nvim_tree_gitignore = 1
+  vim.g.nvim_tree_indent_markers = 1
   require'nvim-tree'.setup {
-    disable_netrw       = false,
-    view = {
-      -- width of the window, can be either a number (columns) or a string in `%`
-      width = 30,
-      -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
-      side = 'left',
-      -- if true the tree will resize itself after opening a file
-      auto_resize = false,
-      mappings = {
-        -- custom only false will merge the list with the default mappings
-        -- if true, it will only use your list to set the mappings
-        custom_only = false,
-        -- list of mappings to set on the tree manually
-        list = {}
-      }
-    }
+    disable_netrw = false,
+    auto_open = 1,
+    auto_close = 1
   }
   vim.g.nvim_tree_highlight_opened_files = 1
   vim.g.nvim_tree_add_trailing = 1
@@ -468,6 +457,7 @@ function config.gitsigns()
        ['o ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>',
        ['x ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>'
      },
+     current_line_blame = true
   }
 end
 
