@@ -25,11 +25,13 @@ map('n', '<leader>nf', '<cmd>Neoformat<cr>', opt)
 
 local cpp = {
 	build = '<cmd>lua require("FTerm").scratch({ cmd = {"g++", "-o", vim.fn.expand("%:r"), vim.fn.expand("%")} })<cr>',
-	run = '<cmd>lua require("FTerm").scratch({ cmd = "./" .. vim.fn.expand("%:r") })<cr>'
+	run = '<cmd>lua require("FTerm").scratch({ cmd = vim.fn.expand("%:r") })<cr>'
 }
 
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
+map('n', '<M-i>', 'lua require("FTerm").toggle()', opt)
+map('t', '<M-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opt)
 
 map('n', '<leader>hw', '<cmd>HopWord<cr>', opt)
 map('n', '<leader>hl', '<cmd>HopLine<cr>', opt)
