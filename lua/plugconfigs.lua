@@ -84,6 +84,10 @@ function config.neoformat()
     \}
     let g:neoformat_enabled_cpp = ['clangformat']
     let g:neoformat_enabled_c = ['clangformat']
+    augroup fmt
+      autocmd!
+      autocmd BufWritePost *.cpp, *.c Neoformat
+    augroup END
   ]]
 end
 

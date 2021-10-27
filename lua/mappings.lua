@@ -30,7 +30,7 @@ local cpp = {
 
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
-map('n', '<M-i>', 'lua require("FTerm").toggle()', opt)
+map('n', '<M-i>', '<cmd>lua require("FTerm").toggle()<cr>', opt)
 map('t', '<M-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opt)
 
 map('n', '<leader>hw', '<cmd>HopWord<cr>', opt)
