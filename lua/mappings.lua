@@ -25,11 +25,22 @@ map('n', '<leader>nf', '<cmd>Neoformat<cr>', opt)
 
 local cpp = {
 	build = '<cmd>lua require("FTerm").scratch({ cmd = {"g++", "-o", vim.fn.expand("%:r"), vim.fn.expand("%")} })<cr>',
-	run = '<cmd>lua require("FTerm").scratch({ cmd = vim.fn.expand("%:r") })<cr>'
+	buildDebug = '<cmd>lua require("FTerm").scratch({ cmd = {"g++", "-g", "-o", vim.fn.expand("%:r"), vim.fn.expand("%")} })<cr>',
+	run = '<cmd>lua require("FTerm").scratch({ cmd = vim.fn.expand("%:p:r") })<cr>'
 }
 
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
+
+map('n', '<leader>db', cpp.buildDebug, opt)
+map('n', '<F5>', ':lua require"dap".continue()<CR>', opt)
+map('n', '<F10>', ':lua require"dap".step_over()<CR>', opt)
+map('n', '<F11>', ':lua require"dap".step_into()<CR>', opt)
+map('n', '<F12>', ':lua require"dap".step_out()<CR>', opt)
+map('n', '<leader>tb', ':lua require"dap".toggle_breakpoint()<CR>', opt)
+map('n', '<leader>D', ':lua require"dapui".toggle()<CR>', opt)
+
+
 map('n', '<M-i>', '<cmd>lua require("FTerm").toggle()<cr>', opt)
 map('t', '<M-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opt)
 

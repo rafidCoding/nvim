@@ -173,3 +173,26 @@ use {
     require('neoscroll').setup()
   end
 }
+
+
+use {
+  'mfussenegger/nvim-dap',
+  event = "VimEnter",
+  requires = {
+    {
+      'rcarriga/nvim-dap-ui',
+      event = "VimEnter",
+      config = function()
+        require("dapui").setup()
+      end
+    },
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      event = "VimEnter",
+      config = function()
+        vim.g.dap_virtual_text = true
+      end
+    }
+  },
+  config = plugins.dap
+}

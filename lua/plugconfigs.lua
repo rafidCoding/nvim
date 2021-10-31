@@ -482,4 +482,25 @@ function config.gitsigns()
   }
 end
 
+function config.dap()
+  local dap = require('dap')
+  dap.adapters.cppdbg = {
+    type = 'executable',
+    command = '/home/gitpod/.config/nvim/debugAdapters/extension/debugAdapters/bin/OpenDebugAD7',
+  }
+  dap.configurations.cpp = {
+    {
+      name = "Launch file",
+      type = "cppdbg",
+      request = "launch",
+      program = '${fileDirname}/${fileBasenameNoExtension}',
+      -- program = function()
+      --   return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      -- end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = true,
+    }
+  }
+end
+
 return config
