@@ -177,7 +177,6 @@ use {
 
 use {
   'mfussenegger/nvim-dap',
-  event = "VimEnter",
   requires = {
     {
       'rcarriga/nvim-dap-ui',
