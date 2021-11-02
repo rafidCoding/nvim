@@ -82,6 +82,7 @@ use {
 use {
   'kyazdani42/nvim-tree.lua',
   -- event = "BufWinEnter"
+  cmd = "NvimTreeToggle",
   config = plugins.nvimtree
 }
 use {
@@ -113,11 +114,13 @@ use {
 }
 use {
   'sbdchd/neoformat',
+  -- event = "VimEnter",
+  event = {'VimEnter', "BufWinEnter", "BufRead", "BufNewFile"},
   config = plugins.neoformat
 }
 use {
   'glepnir/dashboard-nvim',
-  event = 'VimEnter',
+  event = {'VimEnter', "BufWinEnter, BufRead", "BufNewFile"},
   config = plugins.dashboard
 }
 -- use {'mg979/vim-visual-multi', branch = 'master'}
