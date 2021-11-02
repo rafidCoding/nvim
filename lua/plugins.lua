@@ -28,14 +28,24 @@ use {
   -- event = {"BufRead", "BufNewFile"},
   event = "VimEnter"
 }
-use 'ii14/onedark.nvim'
-use 'glepnir/zephyr-nvim'
-use 'morhetz/gruvbox'
-use 'lifepillar/vim-solarized8'
-use 'tomasiser/vim-code-dark'
-use 'shaunsingh/nord.nvim'
-use 'folke/tokyonight.nvim'
-use {'dracula/vim', as = 'dracula'}
+-- use 'ii14/onedark.nvim'
+use {
+  'glepnir/zephyr-nvim',
+  event = {
+    "VimEnter",
+    "BufRead",
+    "BufNewFile"
+  },
+  config = function()
+    vim.cmd('colorscheme zephyr')
+  end
+}
+-- use 'morhetz/gruvbox'
+-- use 'lifepillar/vim-solarized8'
+-- use 'tomasiser/vim-code-dark'
+-- use 'shaunsingh/nord.nvim'
+-- use 'folke/tokyonight.nvim'
+-- use {'dracula/vim', as = 'dracula'}
 -- use {
 --   'hoob3rt/lualine.nvim',
 --   event = {"VimEnter", "BufRead", "BufNewFile"},
@@ -51,7 +61,12 @@ use {'dracula/vim', as = 'dracula'}
 -- }
 use {
   'glepnir/galaxyline.nvim',
-    branch = 'main',
+    -- branch = 'main',
+    event = {
+      "VimEnter",
+      "BufRead",
+      "BufNewFile"
+    },
     -- your statusline
     config = plugins.galaxyline,
     -- some optional icons
@@ -71,7 +86,10 @@ use {
 }
 use {
   'windwp/nvim-autopairs',
-  after = "nvim-cmp",
+  after = {
+    "nvim-treesitter",
+    "nvim-cmp"
+  },
   config = plugins.autopairs
 }
 use {
@@ -91,6 +109,7 @@ use {
 use {
   'nvim-telescope/telescope.nvim',
   requires = {'nvim-lua/plenary.nvim'},
+  cmd = "Telescope"
 }
 use {
   'sbdchd/neoformat',
@@ -104,19 +123,31 @@ use {
 -- use {'mg979/vim-visual-multi', branch = 'master'}
 use {
   'neovim/nvim-lspconfig',
+  event = {
+    "VimEnter",
+    "BufWinEnter",
+    "BufRead",
+    "BufNewFile"
+  },
+  config = plugins.lspconfig
 } -- Collection of configurations for built-in LSP client
 use {
   'hrsh7th/nvim-cmp',
-  event = "VimEnter",
+  event = {
+    "BufRead",
+    "BufNewFile",
+    "InsertEnter"
+  },
   requires = {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
-    {'hrsh7th/cmp-buffer', after = 'nvim-cmp', config = plugins.lspconfig},
+    {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
   },
+  config = plugins.cmp
 }
 use {
   'hrsh7th/vim-vsnip',
-  event = "VimEnter"
+  event = "InsertEnter"
 }
 -- use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 -- use 'L3MON4D3/LuaSnip' -- Snippets plugin'
@@ -126,6 +157,10 @@ use {
 -- }
 use {
   'norcalli/nvim-colorizer.lua',
+  event = {
+    "BufRead",
+    "BufNewFile"
+  },
   config = function()
     require'colorizer'.setup()
   end
@@ -134,13 +169,19 @@ use {
 
 use {
   'lukas-reineke/indent-blankline.nvim',
-  event = "VimEnter",
+  -- event = "VimEnter",
+  event = {
+    "VimEnter",
+    "BufRead",
+    "BufNewFile"
+  },
   config = plugins.indentBlankline
 }
 
 use {
   'rcarriga/nvim-notify',
-  event = "VimEnter",
+  -- event = "VimEnter",
+  after = "zephyr-nvim",
   config = function()
     vim.notify = require("notify")
     require("notify").setup({
@@ -163,6 +204,10 @@ use {
   requires = {
     'nvim-lua/plenary.nvim'
   },
+  event = {
+    "BufRead",
+    "BufNewFile"
+  },
   config = plugins.gitsigns
 }
 
@@ -175,23 +220,36 @@ use {
 }
 
 
+-- use {
+--   'mfussenegger/nvim-dap',
+--   requires = {
+--     {
+--       'rcarriga/nvim-dap-ui',
+--       event = "VimEnter",
+--       config = function()
+--         require("dapui").setup()
+--       end
+--     },
+--     {
+--       'theHamsta/nvim-dap-virtual-text',
+--       event = "VimEnter",
+--       config = function()
+--         vim.g.dap_virtual_text = true
+--       end
+--     }
+--   },
+--   config = plugins.dap
+-- }
+
 use {
-  'mfussenegger/nvim-dap',
+  'rcarriga/nvim-dap-ui',
+  event = {
+    "BufRead",
+    "BufNewFile"
+  },
   requires = {
-    {
-      'rcarriga/nvim-dap-ui',
-      event = "VimEnter",
-      config = function()
-        require("dapui").setup()
-      end
-    },
-    {
-      'theHamsta/nvim-dap-virtual-text',
-      event = "VimEnter",
-      config = function()
-        vim.g.dap_virtual_text = true
-      end
-    }
+    "mfussenegger/nvim-dap",
+    -- "jbyuki/one-small-step-for-vimkind"
   },
   config = plugins.dap
 }

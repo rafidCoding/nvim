@@ -66,5 +66,4 @@ autocmd BufWritePost ~/.config/nvim/lua/mappings.lua luafile ~/.config/nvim/lua/
 autocmd BufWritePost ~/.config/nvim/lua/plugconfigs.lua luafile ~/.config/nvim/lua/plugconfigs.lua
 autocmd BufNewFile  *.cpp 0r ~/.config/nvim/main.cpp
 autocmd BufNewFile  *.cc 0r ~/.config/nvim/main.cpp
-colorscheme zephyr
 ]]

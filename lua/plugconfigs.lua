@@ -23,17 +23,17 @@ function config.autopairs()
   local npairs = require('nvim-autopairs')
 
   -- skip it, if you use another global object
-  _G.MUtils= {}
+  -- _G.MUtils= {}
 
-  MUtils.completion_confirm=function()
-    if vim.fn.pumvisible() ~= 0  then
-      return npairs.esc("<cr>")
-    else
-      return npairs.autopairs_cr()
-    end
-  end
+  -- MUtils.completion_confirm=function()
+  --   if vim.fn.pumvisible() ~= 0  then
+  --     return npairs.esc("<cr>")
+  --   else
+  --     return npairs.autopairs_cr()
+  --   end
+  -- end
 
-  remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+  -- remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 
   -- require("nvim-autopairs.completion.cmp").setup({
   --   map_cr = true, --  map <CR> on insert mode
@@ -47,9 +47,11 @@ function config.autopairs()
   -- })
 
 
-  local npairs = require("nvim-autopairs")
+  -- local npairs = require("nvim-autopairs")
 
-  require('nvim-autopairs').setup{}
+  require('nvim-autopairs').setup({
+    check_ts = true
+  })
   -- If you want insert `(` after select function or method item
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   local cmp = require('cmp')
@@ -125,7 +127,7 @@ end
 
 
 
-function config.lspconfig()
+function config.cmp()
   -- lspconfig cmp setup
   local cmp = require'cmp'
 
@@ -151,7 +153,8 @@ function config.lspconfig()
       { name = 'vsnip'}
     }
   })
-
+end
+function config.lspconfig()
   -- Setup lspconfig.
   require'lspconfig'.clangd.setup {
     capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -483,6 +486,7 @@ function config.gitsigns()
 end
 
 function config.dap()
+  require('dapui').setup()
   local dap = require('dap')
   dap.adapters.cppdbg = {
     type = 'executable',
