@@ -132,6 +132,7 @@ use {
     "BufRead",
     "BufNewFile"
   },
+  requires = {'onsails/lspkind-nvim'},
   config = plugins.lspconfig
 } -- Collection of configurations for built-in LSP client
 use {
@@ -145,11 +146,15 @@ use {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+    {'kdheepak/cmp-latex-symbols', after = 'nvim-cmp'}
   },
   config = plugins.cmp
 }
 use {
   'hrsh7th/vim-vsnip',
+  requires = {
+    'hrsh7th/vim-vsnip-integ'
+  },
   event = "InsertEnter"
 }
 -- use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
