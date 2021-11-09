@@ -29,6 +29,11 @@ local cpp = {
 	run = '<cmd>lua require("FTerm").scratch({ cmd = vim.fn.expand("%:p:r") })<cr>'
 }
 
+
+local latex = {
+	build = '<cmd>lua require("FTerm").scratch({ cmd = {"pdflatex", vim.fn.expand("%")} })<cr>',
+}
+
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
 

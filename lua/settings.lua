@@ -40,7 +40,7 @@ vim.o.autoindent = true
 vim.o.expandtab = true
 -- vim.bo.expandtab = true
 
-
+vim.g.tex_flavor = "latex"
 
 -- vim.g.loaded_matchit           = 1
 -- vim.g.loaded_logiPat           = 1

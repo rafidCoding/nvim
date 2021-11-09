@@ -159,6 +159,9 @@ function config.lspconfig()
   require'lspconfig'.clangd.setup {
     capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
+  require'lspconfig'.texlab.setup {
+    capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
   local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
   for type, icon in pairs(signs) do
