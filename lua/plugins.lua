@@ -153,7 +153,8 @@ use {
 use {
   'hrsh7th/vim-vsnip',
   requires = {
-    'hrsh7th/vim-vsnip-integ'
+    'hrsh7th/vim-vsnip-integ',
+    'rafamadriz/friendly-snippets'
   },
   event = "InsertEnter"
 }

@@ -36,6 +36,8 @@ local latex = {
 
 map('n', '<leader>b', cpp.build, opt)
 map('n', '<leader>r', cpp.run, opt)
+map('n', '<leader>lb', latex.build, opt)
+
 
 map('n', '<leader>db', cpp.buildDebug, opt)
 map('n', '<F5>', ':lua require"dap".continue()<CR>', opt)
