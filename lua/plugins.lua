@@ -30,16 +30,18 @@ use {
 }
 -- use 'ii14/onedark.nvim'
 use {
-  'glepnir/zephyr-nvim',
+  -- 'glepnir/zephyr-nvim',
+  'sainnhe/gruvbox-material',
   event = {
     "VimEnter",
     "BufRead",
     "BufNewFile"
   },
   config = function()
-    vim.cmd('colorscheme zephyr')
+    vim.cmd('colorscheme gruvbox-material')
   end
 }
+-- use 'sainnhe/gruvbox-material'
 -- use 'morhetz/gruvbox'
 -- use 'lifepillar/vim-solarized8'
 -- use 'tomasiser/vim-code-dark'
@@ -60,17 +62,18 @@ use {
 --   end
 -- }
 use {
-  'glepnir/galaxyline.nvim',
+  -- 'glepnir/galaxyline.nvim',
+  "NTBBloodbath/galaxyline.nvim",
     -- branch = 'main',
-    event = {
-      "VimEnter",
-      "BufRead",
-      "BufNewFile"
-    },
-    -- your statusline
-    config = plugins.galaxyline,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  event = {
+    "VimEnter",
+    "BufRead",
+    "BufNewFile"
+  },
+  -- some optional icons
+  requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  -- your statusline
+  config = plugins.galaxyline
 }
 use {
   'akinsho/bufferline.nvim',
@@ -165,7 +168,6 @@ use {
     -- 'hrsh7th/vim-vsnip-integ',
     'rafamadriz/friendly-snippets'
   },
-  event = "InsertEnter"
 }
 -- use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 -- use 'L3MON4D3/LuaSnip' -- Snippets plugin'
@@ -199,7 +201,7 @@ use {
 use {
   'rcarriga/nvim-notify',
   -- event = "VimEnter",
-  after = "zephyr-nvim",
+  after = "gruvbox-material",
   config = function()
     vim.notify = require("notify")
     require("notify").setup({

@@ -254,255 +254,235 @@ function config.lspconfig()
 end
 
 function config.galaxyline()
-  local gl = require('galaxyline')
-  local theme = {}
-  theme.gruvboxcolors = {
-      bg = '#3c3836',
-      -- fg = '#ebdbb2',
-      fg = 'd5c4a1',
-      yellow = '#fabd2f',
-      cyan = '#8ec07c',
-      darkblue = '#458588',
-      green = '#b8bb26',
-      orange = '#fe8019',
-      violet = '#d3869b',
-      magenta = '#b16286',
-      blue = '#83a598',
-      red = '#fb4934'
-    }
-  theme.solarizedcolors = {
-    bg = '#073642',
-    fg = '#eee8d5',
-    yellow = '#b58900',
-    cyan = '#2aa198',
-    darkblue = '#268bd2',
-    green = '#859900',
-    orange = '#cb4b16',
-    violet = '#6c71c4',
-    magenta = '#d33682',
-    blue = '#839496',
-    red = '#dc322f'
-  }
-  theme.codedarkcolors = {
-    bg = '#353535',
-    fg = '#d4d4d4',
-    yellow = '#dcdcaa',
-    cyan = '#4ec9b0',
-    darkblue = '#569cd6',
-    green = '#608b4e',
-    orange = '#ce9178',
-    violet = '#646695',
-    magenta = '#c586c0',
-    blue = '#9cdcfe',
-    red = '#f44747'
-  }
-  local colors = require('galaxyline.theme').default  
-  local condition = require('galaxyline.condition')
+  local gl = require("galaxyline")
+  local colors = require("galaxyline.themes.colors")["gruvbox"]
+  local condition = require("galaxyline.condition")
   local gls = gl.section
-  gl.short_line_list = {'NvimTree','vista','dbui','packer'}
+  gl.short_line_list = { "NvimTree", "vista", "dbui", "packer" }
   
   gls.left[1] = {
     RainbowRed = {
-      provider = function() return '▊ ' end,
-      highlight = {colors.blue,colors.bg}
+      provider = function()
+        return "▊ "
+      end,
+      highlight = { colors.blue, colors.bg },
     },
   }
   gls.left[2] = {
     ViMode = {
       provider = function()
         -- auto change color according the vim mode
-        local mode_color = {n = colors.red, i = colors.green,v=colors.blue,
-                            [''] = colors.blue,V=colors.blue,
-                            c = colors.magenta,no = colors.red,s = colors.orange,
-                            S=colors.orange,[''] = colors.orange,
-                            ic = colors.yellow,R = colors.violet,Rv = colors.violet,
-                            cv = colors.red,ce=colors.red, r = colors.cyan,
-                            rm = colors.cyan, ['r?'] = colors.cyan,
-                            ['!']  = colors.red,t = colors.red}
-        vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()] ..' guibg='..colors.bg)
-        return '  '
+        local mode_color = {
+          n = colors.red,
+          i = colors.green,
+          v = colors.blue,
+          [""] = colors.blue,
+          V = colors.blue,
+          c = colors.magenta,
+          no = colors.red,
+          s = colors.orange,
+          S = colors.orange,
+          [""] = colors.orange,
+          ic = colors.yellow,
+          R = colors.violet,
+          Rv = colors.violet,
+          cv = colors.red,
+          ce = colors.red,
+          r = colors.cyan,
+          rm = colors.cyan,
+          ["r?"] = colors.cyan,
+          ["!"] = colors.red,
+          t = colors.red,
+        }
+        vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
+        return "  "
       end,
+      highlight = { colors.red, colors.bg, "bold" },
     },
   }
   gls.left[3] = {
     FileSize = {
-      provider = 'FileSize',
+      provider = "FileSize",
       condition = condition.buffer_not_empty,
-      highlight = {colors.fg,colors.bg}
-    }
+      highlight = { colors.fg, colors.bg },
+    },
   }
-  gls.left[4] ={
+  gls.left[4] = {
     FileIcon = {
-      provider = 'FileIcon',
+      provider = "FileIcon",
       condition = condition.buffer_not_empty,
-      highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+      highlight = { require("galaxyline.providers.fileinfo").get_file_icon_color, colors.bg },
     },
   }
   
   gls.left[5] = {
     FileName = {
-      provider = 'FileName',
+      provider = "FileName",
       condition = condition.buffer_not_empty,
-      highlight = {colors.fg,colors.bg,'bold'}
-    }
+      highlight = { colors.magenta, colors.bg, "bold" },
+    },
   }
   
   gls.left[6] = {
     LineInfo = {
-      provider = 'LineColumn',
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.fg,colors.bg},
+      provider = "LineColumn",
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.fg, colors.bg },
     },
   }
   
   gls.left[7] = {
     PerCent = {
-      provider = 'LinePercent',
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.fg,colors.bg,'bold'},
-    }
+      provider = "LinePercent",
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.fg, colors.bg, "bold" },
+    },
   }
   
   gls.left[8] = {
     DiagnosticError = {
-      provider = 'DiagnosticError',
-      icon = '  ',
-      highlight = {colors.red,colors.bg}
-    }
+      provider = "DiagnosticError",
+      icon = "  ",
+      highlight = { colors.red, colors.bg },
+    },
   }
   gls.left[9] = {
     DiagnosticWarn = {
-      provider = 'DiagnosticWarn',
-      icon = '  ',
-      highlight = {colors.yellow,colors.bg},
-    }
+      provider = "DiagnosticWarn",
+      icon = "  ",
+      highlight = { colors.yellow, colors.bg },
+    },
   }
   
   gls.left[10] = {
     DiagnosticHint = {
-      provider = 'DiagnosticHint',
-      icon = '  ',
-      highlight = {colors.cyan,colors.bg},
-    }
+      provider = "DiagnosticHint",
+      icon = "  ",
+      highlight = { colors.cyan, colors.bg },
+    },
   }
   
   gls.left[11] = {
     DiagnosticInfo = {
-      provider = 'DiagnosticInfo',
-      icon = '  ',
-      highlight = {colors.blue,colors.bg},
-    }
+      provider = "DiagnosticInfo",
+      icon = "  ",
+      highlight = { colors.blue, colors.bg },
+    },
   }
   
-  gls.left[12] = {
+  gls.mid[1] = {
     ShowLspClient = {
-      provider = 'GetLspClient',
-      condition = function ()
-        local tbl = {['dashboard'] = true,['']=true}
+      provider = "GetLspClient",
+      condition = function()
+        local tbl = { ["dashboard"] = true, [""] = true }
         if tbl[vim.bo.filetype] then
           return false
         end
         return true
       end,
-      icon = ' LSP:',
-      highlight = {colors.yellow,colors.bg,'bold'}
-    }
+      icon = " LSP:",
+      highlight = { colors.cyan, colors.bg, "bold" },
+    },
   }
   
   gls.right[1] = {
     FileEncode = {
-      provider = 'FileEncode',
+      provider = "FileEncode",
       condition = condition.hide_in_width,
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.green,colors.bg,'bold'}
-    }
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.green, colors.bg, "bold" },
+    },
   }
   
   gls.right[2] = {
     FileFormat = {
-      provider = 'FileFormat',
+      provider = "FileFormat",
       condition = condition.hide_in_width,
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.green,colors.bg,'bold'}
-    }
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.green, colors.bg, "bold" },
+    },
   }
   
   gls.right[3] = {
     GitIcon = {
-      provider = function() return '  ' end,
+      provider = function()
+        return "  "
+      end,
       condition = condition.check_git_workspace,
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.violet,colors.bg,'bold'},
-    }
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.violet, colors.bg, "bold" },
+    },
   }
   
   gls.right[4] = {
     GitBranch = {
-      provider = 'GitBranch',
+      provider = "GitBranch",
       condition = condition.check_git_workspace,
-      highlight = {colors.violet,colors.bg,'bold'},
-    }
+      highlight = { colors.violet, colors.bg, "bold" },
+    },
   }
   
   gls.right[5] = {
     DiffAdd = {
-      provider = 'DiffAdd',
+      provider = "DiffAdd",
       condition = condition.hide_in_width,
-      icon = '  ',
-      highlight = {colors.green,colors.bg},
-    }
+      icon = "  ",
+      highlight = { colors.green, colors.bg },
+    },
   }
   gls.right[6] = {
     DiffModified = {
-      provider = 'DiffModified',
+      provider = "DiffModified",
       condition = condition.hide_in_width,
-      icon = ' 柳',
-      highlight = {colors.orange,colors.bg},
-    }
+      icon = " 柳",
+      highlight = { colors.orange, colors.bg },
+    },
   }
   gls.right[7] = {
     DiffRemove = {
-      provider = 'DiffRemove',
+      provider = "DiffRemove",
       condition = condition.hide_in_width,
-      icon = '  ',
-      highlight = {colors.red,colors.bg},
-    }
+      icon = "  ",
+      highlight = { colors.red, colors.bg },
+    },
   }
   
   gls.right[8] = {
     RainbowBlue = {
-      provider = function() return ' ▊' end,
-      highlight = {colors.blue,colors.bg}
+      provider = function()
+        return " ▊"
+      end,
+      highlight = { colors.blue, colors.bg },
     },
   }
   
   gls.short_line_left[1] = {
     BufferType = {
-      provider = 'FileTypeName',
-      separator = ' ',
-      separator_highlight = {'NONE',colors.bg},
-      highlight = {colors.blue,colors.bg,'bold'}
-    }
+      provider = "FileTypeName",
+      separator = " ",
+      separator_highlight = { "NONE", colors.bg },
+      highlight = { colors.blue, colors.bg, "bold" },
+    },
   }
   
   gls.short_line_left[2] = {
     SFileName = {
-      provider =  'SFileName',
+      provider = "SFileName",
       condition = condition.buffer_not_empty,
-      highlight = {colors.fg,colors.bg,'bold'}
-    }
+      highlight = { colors.fg, colors.bg, "bold" },
+    },
   }
   
   gls.short_line_right[1] = {
     BufferIcon = {
-      provider= 'BufferIcon',
-      highlight = {colors.fg,colors.bg}
-    }
+      provider = "BufferIcon",
+      highlight = { colors.fg, colors.bg },
+    },
   }
 end
 
