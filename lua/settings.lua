@@ -24,6 +24,8 @@ vim.o.ignorecase = true
 -- vim.o.sidescrolloff = 5
 vim.o.mouse = "a"
 
+vim.o.completeopt = 'menuone,noselect'
+
 vim.wo.wrap = false
 vim.wo.number = true
 vim.wo.cursorline = true

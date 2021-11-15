@@ -144,16 +144,25 @@ use {
   },
   requires = {
     {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
+    -- {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
+    {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
     {'kdheepak/cmp-latex-symbols', after = 'nvim-cmp'}
   },
   config = plugins.cmp
 }
+-- use {
+--   'hrsh7th/vim-vsnip',
+--   requires = {
+--     'hrsh7th/vim-vsnip-integ',
+--     'rafamadriz/friendly-snippets'
+--   },
+--   event = "InsertEnter"
+-- }
 use {
-  'hrsh7th/vim-vsnip',
+  'L3MON4D3/LuaSnip',
   requires = {
-    'hrsh7th/vim-vsnip-integ',
+    -- 'hrsh7th/vim-vsnip-integ',
     'rafamadriz/friendly-snippets'
   },
   event = "InsertEnter"
