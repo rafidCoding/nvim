@@ -31,7 +31,7 @@ local cpp = {
 
 
 local latex = {
-	build = '<cmd>lua require("FTerm").scratch({ cmd = {"pdflatex", vim.fn.expand("%")} })<cr>',
+	build = '<cmd>lua require("FTerm").scratch({ cmd = {"xelatex", "--shell-escape", vim.fn.expand("%")} })<cr>',
 }
 
 map('n', '<leader>b', cpp.build, opt)
